@@ -4,6 +4,8 @@
 #include <string>
 #include <cstdlib>
 #include <fstream>
+#include "inventory.h"
+
 using namespace std;
 
 void InterpretCommands (istream&);
@@ -12,6 +14,9 @@ void InterpretList (istream&);
 void InterpretBatch (istream&);
 void InterpretQuit (istream&);
 int main();
+
+// global inventory
+Inventory inventory;
 
 void InterpretCommands (istream& cmds) {
 	string line, cmdWord;
@@ -54,8 +59,11 @@ void InterpretList(istream& lineIn) {
 	}
   
   // DO STUFF HERE
-  cout << "list " << word << endl;
-	
+	if (word.compare("names") == 0) {
+    inventory.ListByName();
+	} else {
+    inventory.ListByQuantity();
+	}
 }
 
 void InterpretQuit(istream& lineIn) {
@@ -83,9 +91,8 @@ void InterpretUpdate(istream& lineIn) {
     return;
 	}
 	
-  // DO STUFF HERE (default: print command and arguments)
-  cout << "update " << word << " " << number << endl;
-	
+  // DO STUFF HERE
+  inventory.Update(word, number);
   
 }
 
