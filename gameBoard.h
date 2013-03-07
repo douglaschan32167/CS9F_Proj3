@@ -1,13 +1,17 @@
-using namespace std;
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+
 
 class gameBoard {
 public:
 	gameBoard();
 	void setCell(int player, int row, int col, char c);
 	void print(int player);
-	
+	int main();
 private:
-	char** board;
+	vector< vector<char> > board;
 
-}
+};
 	

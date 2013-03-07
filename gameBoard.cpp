@@ -1,12 +1,15 @@
-
+#include <iostream>
+#include <string>
+#include <vector>
+#include "gameBoard.h"
 using namespace std;
 
-class gameBoard {
+
 	gameBoard::gameBoard() {
-		board = new char*[19];
+		self.board = vector< vector< char > >(19, vector<char>(19));
 		for (int i = 0; i < 19; i++) {
-			for(j = 0; j < 19; j++) {
-				board[i, j] = '.';
+			for(int j = 0; j < 19; j++) {
+				board[i] [j] = '.';
 			}
 		}
 	
@@ -23,7 +26,7 @@ class gameBoard {
 	}
 
 	void gameBoard::print(int player) {
-		if (player == 1]0) {
+		if (player == 0) {
 			for(int i = 0; i < 19; i++) {
 				for(int j = 0; j < 19; j++) {
 					cout << board[i][j];
@@ -43,4 +46,4 @@ class gameBoard {
 
 
 	}
-}	
+	
