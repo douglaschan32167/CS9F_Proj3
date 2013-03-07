@@ -147,6 +147,7 @@ void InterpretBatch(istream& lineIn) {
 
 /* -- TESTS FOR PART 1 -- */
 int partOneTest() {
+  cout << "------PART ONE TESTING BEGINS------" << endl;
   string input;
   // test blank input
   input = "\n";
@@ -207,6 +208,10 @@ int partOneTest() {
   InterpretCommands(content10);
   cout << "Above should say: Error: too many arguments provided for batch" << endl;
   
+  cout << "------PART ONE TESTING ENDS------" << endl << endl << endl;
+  
+  
+  
   // LEGAL COMMANDS TESTED IN "TESTS FOR PART 2"
   
   
@@ -217,6 +222,9 @@ int partOneTest() {
 
 /* -- TESTS FOR PART 2 -- */
 int partTwoTest() {
+  cout << "------PART TWO TESTING BEGINS------" << endl;
+  
+  
   string input;
   string command;
   // test insertion of new item
@@ -289,6 +297,10 @@ int partTwoTest() {
   InterpretCommands(content12);
   cout << "Above should say: blah: 5, books: 1, cookies: 35, fruits: 5" << endl;
   
+  
+  cout << "------PART TWO TESTING ENDS------" << endl;
+  
+  
   return 0;
 }
 
@@ -308,9 +320,9 @@ int partTwoTest() {
 
 
 int main () {
-  /* tests
+  /* tests */
   partOneTest();
-  */
+  
   partTwoTest();
   
 	InterpretCommands (cin);
