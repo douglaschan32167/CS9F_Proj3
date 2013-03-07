@@ -17,9 +17,9 @@ using namespace std;
 	
 	}
 		void GameBoard::setCell(int player, int row, int col, char c) {
-		if ( player == 1) {
+		if ( player == 0) {
 			board[row][col] = c;
-		} else if (player == 2) {
+		} else if (player == 1) {
 			board[18-row][18 - col] = c;
 		} else {
 			cout << "That is not a valid player" << endl;
@@ -35,7 +35,7 @@ using namespace std;
 				cout << endl;
 			}
 		
-		} else if (player == 0) {
+		} else if (player == 1) {
 			for(int i = 18; i > -1; i--) {
 				for(int j = 18; j > -1; j--) {
 					cout << board[i][j];
