@@ -127,7 +127,7 @@ void InterpretBatch(istream& lineIn) {
 	}
 	
 	// resume reading input
-  main();
+  return;
 }
 
 
@@ -207,13 +207,92 @@ int partOneTest() {
   InterpretCommands(content10);
   cout << "Above should say: Error: too many arguments provided for batch" << endl;
   
+  // LEGAL COMMANDS TESTED IN "TESTS FOR PART 2"
+  
   
   
   return 0;
 }
 /* -- END OF PART 1 TESTING -- */
 
+/* -- TESTS FOR PART 2 -- */
+int partTwoTest() {
+  string input;
+  string command;
+  // test insertion of new item
+  cout << "---TESTING INSERTION OF NEW ITEM---" << endl;
+  input = "update books 5";
+  istringstream content1 (input.c_str());
+  InterpretCommands(content1);
+  command = "list names";
+  istringstream content2 (command.c_str());
+  InterpretCommands(content2);
+  cout << "Above should say: books : 5" << endl;
+  
+  
+  // test update of existing item
+  cout << "---TESTING UPDATE OF EXISTING ITEM---" << endl;
+  input = "update books 10";
+  istringstream content3 (input.c_str());
+  InterpretCommands(content3);
+  command = "list names";
+  istringstream content0 (command.c_str());
+  InterpretCommands(content0);
+  cout << "Above should say: books: 15" << endl;
+  
+  // insert new items to test sorting
+  cout << "---TESTING SORTING---" << endl;
+  input = "update cookies 20";
+  istringstream content4 (input.c_str());
+  InterpretCommands(content4);
+  command = "list names";
+  istringstream content5 (command.c_str());
+  InterpretCommands(content5);
+  cout << "Above should say: books: 15, cookies: 20" << endl;
+  input = "update fruits 5";
+  istringstream content6 (input.c_str());
+  InterpretCommands(content6);
+  command = "list names";
+  istringstream content7 (command.c_str());
+  InterpretCommands(content7);
+  cout << "Above should say: books: 15, cookies: 20, fruits: 5" << endl;
+  
+  // test sorting by quantity (large value between small values)
+  cout << "-Sort test : sort by quantity, with large value between small values-" << endl;
+  command = "list quantities";
+  istringstream content8 (command.c_str());
+  InterpretCommands(content8);
+  cout << "Above should say: fruits: 5, books: 15, cookies: 20" << endl;
+  
+  // test sorting by quantity (small value between large values)
+  cout << "-Sort test : sort by quantity, with small value between large values-" << endl;
+  input = "update books -14";
+  istringstream content9 (input.c_str());
+  InterpretCommands(content9);
+  command = "list quantities";
+  istringstream content10 (command.c_str());
+  InterpretCommands(content10);
+  cout << "Above should say: books: 1, fruits: 5, cookies: 20" << endl;
+  
+  // test sorting by names
+  cout << "-Sort test : sort by names-" << endl;
+  command = "list names";
+  istringstream content11 (command.c_str());
+  InterpretCommands(content11);
+  cout << "Above should say: books: 1, cookies: 20, fruits: 5" << endl;
+  
+  
+  // test batch
+  cout << "---TESTING BATCH---" << endl;
+  input = "batch parttwotest.txt";
+  istringstream content12 (input.c_str());
+  InterpretCommands(content12);
+  cout << "Above should say: blah: 5, books: 1, cookies: 35, fruits: 5" << endl;
+  
+  return 0;
+}
 
+/* -- END OF PART 2 TESTING -- */
 
 
 
@@ -232,6 +311,8 @@ int main () {
   /* tests
   partOneTest();
   */
+  partTwoTest();
+  
 	InterpretCommands (cin);
 	return 0;
 }
