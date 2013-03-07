@@ -1,12 +1,13 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "gameBoard.h"
+#include "GameBoard.h"
 using namespace std;
 
 
-	gameBoard::gameBoard() {
-		self.board = vector< vector< char > >(19, vector<char>(19));
+	GameBoard::GameBoard() 
+	{
+		board = vector< vector< char > >(19, vector<char>(19));
 		for (int i = 0; i < 19; i++) {
 			for(int j = 0; j < 19; j++) {
 				board[i] [j] = '.';
@@ -15,17 +16,17 @@ using namespace std;
 	
 	
 	}
-		void gameBoard::setCell(int player, int row, int col, char c) {
+		void GameBoard::setCell(int player, int row, int col, char c) {
 		if ( player == 1) {
 			board[row][col] = c;
 		} else if (player == 2) {
 			board[18-row][18 - col] = c;
 		} else {
-			cout << “That is not a valid player”;
+			cout << "That is not a valid player" << endl;
 		}
 	}
 
-	void gameBoard::print(int player) {
+	void GameBoard::print(int player) {
 		if (player == 0) {
 			for(int i = 0; i < 19; i++) {
 				for(int j = 0; j < 19; j++) {
